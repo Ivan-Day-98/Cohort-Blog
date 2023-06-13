@@ -1,4 +1,6 @@
 <?php 
+    namespace Blog;
+    require '../../vendor/autoload.php';
     class SessionManager
     {
         private static $instance;
