@@ -8,7 +8,7 @@
             $username = (string)readline("What is your username? ");
             $password = (string)readline("What is your password? ");
             $authenticationSystem = new AuthenticationSystem();
-            $authenticationSystem->authenticate($username, $password);
+            return $authenticationSystem->authenticate($username, $password);
         }
     }
     // Login::promptLogin();

@@ -14,8 +14,10 @@
                 if ($user[0] === $username and password_verify($password, $user[1])){
                     //allow user to see feed
                     $this->setCurrentUser($username);
+                    return True;
                 }
             }
+            return False;
         }
         private function setCurrentUser($username)
         {

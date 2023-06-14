@@ -5,7 +5,10 @@
     if ($userChoice === "login")
     {
         $login = new Login();
-        $login->promptLogin();
+        if ($login->promptLogin())
+        {
+            //show user feed
+        }
     } 
     else if ($userChoice === "register")
     {
