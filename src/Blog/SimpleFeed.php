@@ -5,6 +5,7 @@ require "../../vendor/autoload.php";
 
 class SimpleFeed implements FeedInterface
 {
+    use UserFilterTrait;
     private $allPosts;
 
     public function __construct(array $allPosts)
@@ -12,34 +13,29 @@ class SimpleFeed implements FeedInterface
         $this->allPosts = $allPosts;
     }
 
-    public function displayFeed()
+    public function displayFeed($user, $category = null)
     {
-        //call filter the other 2 filter methods
-        //loop thru filtered list
-        // print_r($this->allPosts);
         foreach ($this->allPosts as $post) {
-            // echo "test";
-            // Display or process each post
-            echo "Post: " . $post->getContent() . "\n";
+            if ($this->filterByUser($post, $user)) {
+                echo "Post: " . $post->getContent() . "\n";
+                echo "Category: " . $post->getCategory() . "\n";
+            }
         }
     }
 
-    public function filterByUser()
-    {
-        //if statement checking if proper user
-    }
-
-    public function filterByCategory()
+    public function filterByCategory($post, $category)
     {
         //do nothing in simple feed bc no filtering
-        return false;
+        return;
     }
 }
 
-$post = BlogPostFactory::createBlogPost("title", "content1", "justin", "category", "today", "user");
-$post1 = BlogPostFactory::createBlogPost("title1", "content2", "justin", "category", "today", "user");
-$post2 = BlogPostFactory::createBlogPost("title2", "content3", "justin", "category", "today", "user");
-$post3 = BlogPostFactory::createBlogPost("title3", "content4", "justin", "category", "today", "user");
+$user1 = UserFactory::createUser('justin', 'pass', 'email.com');
+$user2 = UserFactory::createUser('ivan', 'pass', 'email.com');
+$post = BlogPostFactory::createBlogPost("title", "justins post", $user1, "funny", "today", "user");
+$post1 = BlogPostFactory::createBlogPost("title1", "ivan post", $user2, "funny", "today", "user");
+$post2 = BlogPostFactory::createBlogPost("title2", "justins post", $user1, "funny", "today", "user");
+$post3 = BlogPostFactory::createBlogPost("title3", "ivan post", $user2, "horror", "today", "user");
 $storage = new FeedStorage();
 $storage->addPost($post);
 $storage->addPost($post1);
@@ -47,6 +43,6 @@ $storage->addPost($post2);
 $storage->addPost($post3);
 // print_r($storage);
 $simpleFeed = new SimpleFeed($storage->getPosts());
-$simpleFeed->displayFeed();
+$simpleFeed->displayFeed($user2, "funny");
 
 ?>

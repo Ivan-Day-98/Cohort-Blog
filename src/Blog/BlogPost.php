@@ -43,6 +43,16 @@ class BlogPost
         $this->creationDate = $creationDate;
     }
 
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
     public function checkIfDeleted()
     {
         return $this->isDeleted;

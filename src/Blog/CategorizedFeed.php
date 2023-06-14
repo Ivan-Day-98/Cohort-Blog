@@ -5,21 +5,32 @@ require "../../vendor/autoload.php";
 
 class CategorizedFeed implements FeedInterface
 {
+    use UserFilterTrait;
     private $category;
+    private $allPosts;
 
-    public function displayFeed()
+    public function __construct(array $allPosts)
     {
-        //same as simple feed
+        $this->allPosts = $allPosts;
     }
 
-    public function filterByUser()
+    public function displayFeed($user, $category)
     {
-        //same as simple feed 
+        foreach ($this->allPosts as $post) {
+            if ($this->filterByUser($post, $user) && self::filterByCategory($post, $category)) {
+                echo "Post: " . $post->getContent() . "\n";
+                echo "Category: " . $post->getCategory() . "\n";
+            }
+        }
     }
 
-    public function filterByCategory()
+    public function filterByCategory($post, $category)
     {
         //do filter logic
+        if ($post->getCategory() == $category) {
+            return true;
+        }
+        return false;
     }
 }
 

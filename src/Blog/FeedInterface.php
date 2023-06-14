@@ -5,11 +5,9 @@ require "../../vendor/autoload.php";
 
 interface FeedInterface
 {
-    public function displayFeed();
+    public function displayFeed($user, $category);
 
-    public function filterByUser();
-
-    public function filterByCategory();
+    public function filterByCategory($post, $category);
 }
 
 
