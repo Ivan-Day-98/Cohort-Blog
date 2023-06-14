@@ -3,8 +3,8 @@
     require '../../vendor/autoload.php';
     class RegistrationSystem 
     {
-        private function __construct(){}
-        public static function register()
+        public function __construct(){}
+        public function register()
         {
             $username = (string)readline("What is your username? ");
             $password = (string)readline("What is your password? ");
@@ -12,7 +12,13 @@
             $user = UserFactory::createUser($username, $password, $email);
             // $session = SessionManager::getInstance();
             // $session->setSessionData("username", $username);
-            $user->saveToDatabase();
+            $this->saveToDatabase($user);
+        }
+        private function saveToDatabase($user)
+        {
+            $database = fopen("../../database/users.txt", "a") or die ("unable to open file!");
+            fwrite($database, $user->getUsername() . " " . $user->getPassword() . " " . $user->getEmail() . "\n");
+            fclose($database);
         }
     }
     //RegistrationSystem::register("Justin", "password", "justin.turkaly@koddi.com");

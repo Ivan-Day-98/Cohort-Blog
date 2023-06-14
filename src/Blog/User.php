@@ -10,11 +10,17 @@
             $this->password = $password;
             $this->email = $email;
         }
-        public function saveToDatabase()
+        public function getUsername()
         {
-            $database = fopen("../../database/users.txt", "a") or die ("unable to open file!");
-            fwrite($database, $this->username . " " . $this->password . " " . $this->email);
-            fclose($database);
+            return $this->username;
+        }
+        public function getPassword()
+        {
+            return $this->password;
+        }
+        public function getEmail()
+        {
+            return $this->email;
         }
     }
 ?>

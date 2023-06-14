@@ -1,6 +1,6 @@
 <?php 
-    use Blog\Login;
-    require '../vendor/autoload.php';
+    namespace Blog;
+    require '../../vendor/autoload.php';
     $userChoice = (string)readline("would you like to register or login? ");
     if ($userChoice === "login")
     {
@@ -8,6 +8,7 @@
     } 
     else if ($userChoice === "register")
     {
-        RegistrationSystem::register();
+        $registrationSystem = new RegistrationSystem();
+        $registrationSystem->register();
     }
 ?>

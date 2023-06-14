@@ -3,7 +3,7 @@
     require '../../vendor/autoload.php';
     class AuthenticationSystem
     {
-        private function __construct(){}
+        public function __construct(){}
         public static function authenticate($username, $password)
         {
             $database = '../../database/users.txt';
@@ -16,6 +16,10 @@
                     echo "logged in!";
                 }
             }
+        }
+        private function setCurrentUser()
+        {
+            
         }
     }
     // AuthenticationSystem::authenticate("Ivan", "test");
