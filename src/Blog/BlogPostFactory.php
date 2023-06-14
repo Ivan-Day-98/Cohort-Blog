@@ -9,10 +9,11 @@ class BlogPostFactory
     }
 }
 
-$post = BlogPostFactory::createBlogPost("title", "content", "justin", "category", "today", "user");
+$user = UserFactory::createUser("username", "email", "pass");
+$post = BlogPostFactory::createBlogPost("title", "content", $user, "category", "today", "user");
 $manager = new BlogPostManager();
 $manager->editBlogPost($post, "new title", "new content");
-$manager->deleteBlogPost($post);
-$manager->editBlogPost($post, "test123", "new content");
 print_r($post);
+$manager->deleteBlogPost($post);
+#$manager->editBlogPost($post, "test123", "new content");
 ?>
