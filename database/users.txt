@@ -1,4 +1,3 @@
-Justin password justin.turkaly@koddi.com
-Ivan test ivanday9@gmail.com
-Matt password matt@koddi.com
-
+Ivan $2y$10$3rQ.appCoopJ/ovIT1XWGOQvbHGgoiHxtjxHVLIlT.k5CL00UDlLm ivanday9@gmail.com
+Justin $2y$10$TXnCspMz6BTFmwafpSjaTuQ/ZCTrTSQx1BrCpWop0Efajw8OMXRUK justin.turkaley@koddi.com
+test $2y$10$JHu2ZzyGvl2.R.8.0foPz.f7O9iO16Yp2wUv0AeCyySXX1zJXTja2 test
