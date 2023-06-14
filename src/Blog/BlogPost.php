@@ -33,6 +33,11 @@ class BlogPost
         $this->content = $content;
     }
 
+    public function getContent()
+    {
+        return $this->content;
+    }
+
     public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
