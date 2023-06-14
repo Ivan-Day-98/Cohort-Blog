@@ -4,7 +4,7 @@
     class AuthenticationSystem
     {
         public function __construct(){}
-        public static function authenticate($username, $password)
+        public function authenticate($username, $password)
         {
             $database = '../../database/users.txt';
             $contents = file($database);
@@ -13,13 +13,14 @@
                 $user = explode(" ", $line);
                 if ($user[0] === $username and $user[1] === $password){
                     //allow user to see feed
-                    echo "logged in!";
+                    $this->setCurrentUser($username);
                 }
             }
         }
-        private function setCurrentUser()
+        private function setCurrentUser($username)
         {
-            
+            $activeUser = fopen('../../database/activeUser.txt', 'w');
+            fwrite($activeUser, $username);
         }
     }
     // AuthenticationSystem::authenticate("Ivan", "test");
