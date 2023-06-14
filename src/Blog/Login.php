@@ -3,8 +3,8 @@
     require '../../vendor/autoload.php';
     class Login
     {
-        private function __construct(){}
-        public static function promptLogin(){
+        public function __construct(){}
+        public function promptLogin(){
             $username = (string)readline("What is your username? ");
             $password = (string)readline("What is your password? ");
             $authenticationSystem = new AuthenticationSystem();

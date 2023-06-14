@@ -17,8 +17,13 @@
         private function saveToDatabase($user)
         {
             $database = fopen("../../database/users.txt", "a") or die ("unable to open file!");
-            fwrite($database, $user->getUsername() . " " . $user->getPassword() . " " . $user->getEmail() . "\n");
+            $encryptedPass = $this->encryptPassword($user->getPassword());
+            fwrite($database, $user->getUsername() . " " . $encryptedPass . " " . $user->getEmail() . "\n");
             fclose($database);
+        }
+        private function encryptPassword($password)
+        {
+            return password_hash($password, PASSWORD_DEFAULT);
         }
     }
     //RegistrationSystem::register("Justin", "password", "justin.turkaly@koddi.com");

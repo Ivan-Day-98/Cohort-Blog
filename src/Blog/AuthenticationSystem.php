@@ -11,7 +11,7 @@
             foreach($contents as $line)
             {
                 $user = explode(" ", $line);
-                if ($user[0] === $username and $user[1] === $password){
+                if ($user[0] === $username and password_verify($password, $user[1])){
                     //allow user to see feed
                     $this->setCurrentUser($username);
                 }

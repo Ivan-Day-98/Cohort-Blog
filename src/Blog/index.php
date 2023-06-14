@@ -4,7 +4,8 @@
     $userChoice = (string)readline("would you like to register or login? ");
     if ($userChoice === "login")
     {
-        Login::promptLogin();
+        $login = new Login();
+        $login->promptLogin();
     } 
     else if ($userChoice === "register")
     {
